@@ -11,8 +11,8 @@ class Fix45Test {
   private static Object[][] fix45() {
     return new Object[][]{
 
-        {new int[]{4, 5, 4, 5, 1} , new int[] {4, 5, 4, 1, 5}},
-        {new int[] {9, 4, 5, 4, 5, 9}, new int[] {5, 4, 9, 4, 9, 5}},
+        {new int[] {1, 4, 5, 1, 1, 4, 5}, new int[] {1, 4, 1, 5, 5, 4, 1}},
+        {new int[] {1, 1, 4, 5, 4, 5}, new int[] {5, 5, 4, 1, 4, 1}},
         {new int[]{1, 4, 5, 4, 5}, new int[]{5, 4, 5, 4, 1}}
     };
   }

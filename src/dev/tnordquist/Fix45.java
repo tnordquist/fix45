@@ -1,8 +1,5 @@
 package dev.tnordquist;
 
-import java.util.LinkedList;
-import java.util.List;
-
 /**
  * (This is a slightly harder version of the fix34 problem.) Return an array that contains exactly
  * the same numbers as the given array, but rearranged so that every 4 is immediately followed by a
@@ -14,28 +11,34 @@ import java.util.List;
 public class Fix45 {
 
   public static int[] fix45(int[] nums) {
-
-    List<Integer> fives = new LinkedList<>();
-
-    for (int k = 0; k < nums.length; ++k) {
-      if (nums[k] == 5) {
-        fives.add(k);
-      }
-    }
-
+    int index4 = 0;
+    int index5 = 0;
+    int k = 0;
     for (int i = 0; i < nums.length; ++i) {
 
-      if (nums[i] == 4) {
-        if(nums[i+1]==5){
+      if (nums[i] != 4) {
+        continue;
+      } else {
+        index4 = i;
+      }
+      for (int j = k; j < nums.length; ++j) {
+        if (nums[j] != 5) {
+          continue;
+        } else {
+          index5 = j;
+          k = j;
         }
-        int temp = nums[i + 1];
-        nums[i + 1] = nums[fives.get(fives.size()-1)];
-        nums[fives.remove(fives.size()-1)] = temp;
+
+        if (nums[0] == 5) {
+          index5 = 0;
+        }
+        int temp = nums[index5];
+        nums[index5] = nums[index4 + 1];
+        nums[index4 + 1] = temp;
       }
 
     }
+
     return nums;
   }
-
-
 }
